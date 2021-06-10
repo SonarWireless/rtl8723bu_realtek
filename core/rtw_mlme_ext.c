@@ -11866,8 +11866,10 @@ static void rtw_mlmeext_disconnect(_adapter *padapter)
 		self_action = MLME_STA_DISCONNECTED;
 	else if (MLME_IS_ADHOC(padapter) || MLME_IS_ADHOC_MASTER(padapter))
 		self_action = MLME_ADHOC_STOPPED;
-	else
-		rtw_warn_on(1);
+	else {
+		RTW_INFO("state:0x%x\n", MLME_STATE(padapter));
+		// rtw_warn_on(1);
+	}
 
 	/* set_opmode_cmd(padapter, infra_client_with_mlme); */
 
